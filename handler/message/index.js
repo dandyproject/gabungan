@@ -78,6 +78,13 @@ module.exports = msgHandler = async (client = new Client(), message) => {
         case 'don':
             await client.sendText(from, menuId.textDonasi())
             break
+			 case 'lirik':
+            if (args.length == 0) return client.reply(from, 'Kirim perintah *!lirik* judul lagu, contoh *!lirik* aku bukan boneka', message.id)
+            const lagu = body.slice(7)
+            console.log(lagu)
+            const lirik = await liriklagu(lagu)
+            client.sendText(from, lirik)
+            break
              case 'igstalk':
                         if(!args.lenght >= 2) return
                         if(!args[1]) return
